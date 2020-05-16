@@ -1,7 +1,7 @@
 package com.example.fragments;
 
 
-import android.app.Fragment;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 public class FragmentA extends Fragment {
     private  static final String TAG= FragmentA.class.getSimpleName();
@@ -73,7 +74,6 @@ public class FragmentA extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.i(TAG,"inside onDestroy");
+        Log.i(TAG,"inside onDestroy ");
     }
-
 }

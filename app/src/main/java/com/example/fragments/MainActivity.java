@@ -1,16 +1,15 @@
 package com.example.fragments;
-
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity {
  public static final String TAG=MainActivity.class.getSimpleName();
-    FragmentManager manager=getFragmentManager();
+    FragmentManager manager=getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,8 +70,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void removeFragmentA(View view) {
-       FragmentA fragmentA=(FragmentA) manager.findFragmentByTag("fragA");
-       FragmentTransaction transaction=manager.beginTransaction();
+       FragmentA fragmentA;
+        fragmentA = (FragmentA) manager.findFragmentByTag("fragA");
+        FragmentTransaction transaction=manager.beginTransaction();
         if(fragmentA!=null)
         {
             transaction.remove(fragmentA);
@@ -102,15 +102,39 @@ public class MainActivity extends AppCompatActivity {
     public void replaceByFragmentB(View view) {
         FragmentB fragmentB=new FragmentB();
         FragmentTransaction transaction=manager.beginTransaction();
-        transaction.replace(R.id.container, fragmentB,"fragA");
+        transaction.replace(R.id.container, fragmentB,"fragB");
         transaction.commit();
 
     }
 
     public void hideFragmentA(View view) {
+        FragmentA fragmentA=(FragmentA) manager.findFragmentByTag("fragA");
+        FragmentTransaction transaction=manager.beginTransaction();
+        if(fragmentA!=null)
+        {
+            transaction.hide(fragmentA);
+            transaction.commit();
+        }
+
+        else
+        {
+            Toast.makeText(this, "Fragment A not found", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void showFragmentA(View view) {
+        FragmentA fragmentA=(FragmentA) manager.findFragmentByTag("fragA");
+        FragmentTransaction transaction=manager.beginTransaction();
+        if(fragmentA!=null)
+        {
+            transaction.show(fragmentA);
+            transaction.commit();
+        }
+
+        else
+        {
+            Toast.makeText(this, "Fragment A not found", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void detachFragmentA(View view) {
