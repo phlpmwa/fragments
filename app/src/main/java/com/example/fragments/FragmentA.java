@@ -1,79 +1,38 @@
 package com.example.fragments;
-
-
-
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class FragmentA extends Fragment {
-    private  static final String TAG= FragmentA.class.getSimpleName();
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        Log.i(TAG,"inside onAttach ");
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.i(TAG,"inside onCreate ");
-    }
-
-    @Nullable
+    private Button btnAdd;
+    private TextView txvResult;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater .inflate(R.layout.fragment_a, container, false);
-        Log.i(TAG,"inside onCreateView ");
+        Bundle bundle=getArguments();
+        final int firstNum=bundle.getInt("first_number",0);
+        final int secondNum=bundle.getInt("second_number",0);
+        btnAdd= view.findViewById(R.id.btnAdd);
+        txvResult= view.findViewById(R.id.results);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+         addTwoNumbers(firstNum, secondNum);
+            }
+        });
         return view;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.i(TAG,"inside onActivityCreated ");
+    private void addTwoNumbers(int firstNum, int secondNum) {
+        int result=firstNum+secondNum;
+        txvResult.setText("Result: "+result);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.i(TAG,"inside onStart ");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.i(TAG,"inside onResume ");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.i(TAG,"inside onPause ");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.i(TAG,"inside onStop ");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.i(TAG,"inside onDestroyView ");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG,"inside onDestroy ");
-    }
 }

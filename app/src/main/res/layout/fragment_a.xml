@@ -11,5 +11,20 @@
         android:text="@string/fragment_a"
         android:textColor="@android:color/black"
         />
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add two numbers"
+        android:id="@+id/btnAdd"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Result"
+        android:layout_marginTop="20dp"
+        android:id="@+id/results"
+        android:textStyle="italic"
+        android:textSize="30sp"
+        />
 </LinearLayout>

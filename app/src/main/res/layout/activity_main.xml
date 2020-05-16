@@ -6,87 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="#0f0"
-    android:id="@+id/layout">
+    android:background="#FF0"
+    android:id="@+id/layout"
+    android:padding="10dp">
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@android:color/white"
         >
-        <Button
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/add_a"
-            android:onClick="addFragmentA"/>
-        <Button
-            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:text="0"
+            android:id="@+id/num1"
+            />
+        <EditText
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/remove_a"
-            android:onClick="removeFragmentA"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_b"
-            android:onClick="addFragmentB"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/remove_b"
-            android:onClick="removeFragmentB"/>
-
+            android:layout_weight="1"
+            android:inputType="number"
+            android:text="0"
+            android:id="@+id/num2"/>
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
+
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Replace By 'A'"
-            android:onClick="replaceByFragmentA"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Replace By 'B'"
-            android:onClick="replaceByFragmentB"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Attach A"
-            android:onClick="attachFragmentA"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Detach A"
-            android:onClick="detachFragmentA"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Show A"
-            android:onClick="showFragmentA"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hide A"
-            android:onClick="hideFragmentA"
-            />
-    </LinearLayout>
+        android:onClick="sendDataToFragment"
+        android:text="Send data To Fragment"/>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/container"
         android:layout_margin="10dp"
+        android:background="#0f0"
         />
 </LinearLayout>
