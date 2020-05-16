@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Fragments</string>
     <string name="hello_from_fragment">Hello from Fragment</string>
+    <string name="fragment_a">fragment A</string>
+    <string name="fragment_b">fragment B</string>
+    <string name="add_a">ADD A</string>
+    <string name="remove_a">Remove A</string>
+    <string name="remove_b">Remove B</string>
+    <string name="add_b">ADD B</string>
 </resources>

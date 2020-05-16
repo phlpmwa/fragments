@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class HelloFragment extends Fragment {
-    private  static final String TAG=HelloFragment.class.getSimpleName();
+public class FragmentA extends Fragment {
+    private  static final String TAG= FragmentA.class.getSimpleName();
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -29,7 +29,7 @@ public class HelloFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater .inflate(R.layout.hello_fragment, container, false);
+        View view=inflater .inflate(R.layout.fragment_a, container, false);
         Log.i(TAG,"inside onCreateView ");
         return view;
     }
@@ -76,9 +76,4 @@ public class HelloFragment extends Fragment {
         Log.i(TAG,"inside onDestroy");
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        Log.i(TAG,"inside onDetach ");
-    }
 }
