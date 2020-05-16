@@ -13,18 +13,18 @@ import androidx.fragment.app.Fragment;
 public class FragmentA extends Fragment {
     private Button btnAdd;
     private TextView txvResult;
+    private  int firstNumber=0, secondNumber=0;
+    private  MainActivity.Employee employee;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater .inflate(R.layout.fragment_a, container, false);
-        Bundle bundle=getArguments();
-        final int firstNum=bundle.getInt("first_number",0);
-        final int secondNum=bundle.getInt("second_number",0);
+
         btnAdd= view.findViewById(R.id.btnAdd);
         txvResult= view.findViewById(R.id.results);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-         addTwoNumbers(firstNum, secondNum);
+         addTwoNumbers(firstNumber, secondNumber);
             }
         });
         return view;
@@ -35,4 +35,12 @@ public class FragmentA extends Fragment {
         txvResult.setText("Result: "+result);
     }
 
+    public void setData(int firstNumber, int secondNumber) {
+        this.firstNumber=firstNumber;
+        this.secondNumber=secondNumber;
+    }
+
+    public void setEmployeeObj(MainActivity.Employee employee) {
+        this.employee=employee;
+    }
 }

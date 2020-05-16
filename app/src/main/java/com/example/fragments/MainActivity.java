@@ -26,14 +26,19 @@ public class MainActivity extends AppCompatActivity {
     public void sendDataToFragment(View view) {
         int firstNumber=Integer.valueOf(edtNumOne.getText().toString());
         int secondNumber= Integer.valueOf(edtNumTwo.getText().toString());
-        Bundle bundle=new Bundle();
-        bundle.putInt("first_number",firstNumber);
-        bundle.putInt("second_number", secondNumber);
+
         FragmentA fragmentA=new FragmentA();
-        fragmentA.setArguments(bundle);
+        fragmentA.setData(firstNumber, secondNumber);//passing the primitive data type
+        //passing non-primitive type data
+        fragmentA.setEmployeeObj(new Employee());
         FragmentTransaction fragmentTransaction=manager.beginTransaction();
         fragmentTransaction.add(R.id.container, fragmentA, "fragA");
         fragmentTransaction.commit();
 
+    }
+    public class Employee
+    {
+        String name;
+        int profId;
     }
 }
