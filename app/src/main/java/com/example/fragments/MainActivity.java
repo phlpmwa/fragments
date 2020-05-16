@@ -130,5 +130,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void attachFragmentA(View view) {
+        FragmentA fragmentA=(FragmentA) manager.findFragmentByTag("fragA");
+        FragmentTransaction transaction=manager.beginTransaction();
+        if(fragmentA!=null)
+        {
+            transaction.attach(fragmentA);
+            transaction.commit();
+        }
+
+        else
+        {
+            Toast.makeText(this, "Fragment A not found", Toast.LENGTH_LONG).show();
+        }
     }
 }
