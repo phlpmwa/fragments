@@ -9,37 +9,16 @@
     android:background="#FF0"
     android:id="@+id/layout"
     android:padding="10dp">
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@android:color/white"
-        >
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="number"
-            android:text="0"
-            android:id="@+id/num1"
-            />
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="number"
-            android:text="0"
-            android:id="@+id/num2"/>
-
-    </LinearLayout>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="sendDataToFragment"
-        android:text="Send data To Fragment"/>
+        android:layout_gravity="center_horizontal"
+        android:text="Result"
+        android:layout_marginTop="20dp"
+        android:id="@+id/results"
+        android:textStyle="italic"
+        android:textSize="30sp"
+        />
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
