@@ -83,6 +83,29 @@
             android:onClick="hideFragmentA"
             />
     </LinearLayout>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+<androidx.appcompat.widget.AppCompatButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="back"
+    android:onClick="dummyBackButtonClick"
+    />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pop add a inclusive"
+            android:onClick="pop_AddFragA_Inclusive_transaction"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pop add b"
+            android:onClick="pop_AddFragB_transaction"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

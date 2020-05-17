@@ -7,45 +7,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
  public static final String TAG=MainActivity.class.getSimpleName();
-    FragmentManager manager=getSupportFragmentManager();
+    FragmentManager manager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.e(TAG, "onCreate");
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.e(TAG, "onStart()");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.e(TAG, "onResume()");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.e(TAG, "onPause()");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.e(TAG, "onStop()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.e(TAG, "onDestroy()");
+        manager=getSupportFragmentManager();
+        manager.addOnBackStackChangedListener(this);
     }
 
     public void removeFragmentB(View view) {
@@ -54,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         if(fragmentB!=null)
         {
             transaction.remove(fragmentB);
+            transaction.addToBackStack("ReplaceFragB");
             transaction.commit();
         }
         else {
@@ -66,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction transaction=manager.beginTransaction();
         transaction.add(R.id.container, fragmentB, "fragB");
+        transaction.addToBackStack("AddFragB");
         transaction.commit();
     }
 
@@ -76,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         if(fragmentA!=null)
         {
             transaction.remove(fragmentA);
+            transaction.addToBackStack("RemoveFragB");
             transaction.commit();
         }
         else {
@@ -88,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentA fragmentA= new FragmentA();
         FragmentTransaction transaction=manager.beginTransaction();
             transaction.add(R.id.container, fragmentA, "fragA");
+        transaction.addToBackStack("AddFragA");
             transaction.commit();
 
     }
@@ -96,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentA fragmentA=new FragmentA();
         FragmentTransaction transaction=manager.beginTransaction();
         transaction.replace(R.id.container, fragmentA,"fragA");
+        transaction.addToBackStack("ReplaceFragA");
         transaction.commit();
     }
 
@@ -103,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentB fragmentB=new FragmentB();
         FragmentTransaction transaction=manager.beginTransaction();
         transaction.replace(R.id.container, fragmentB,"fragB");
+        transaction.addToBackStack("ReplaceFragB");
         transaction.commit();
 
     }
@@ -113,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         if(fragmentA!=null)
         {
             transaction.hide(fragmentA);
+            transaction.addToBackStack("HideFragA");
             transaction.commit();
         }
 
@@ -128,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         if(fragmentA!=null)
         {
             transaction.show(fragmentA);
+            transaction.addToBackStack("ShowFragA");
             transaction.commit();
         }
 
@@ -143,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         if(fragmentA!=null)
         {
             transaction.detach(fragmentA);
+            transaction.addToBackStack("DetachFragA");
             transaction.commit();
         }
 
@@ -159,12 +139,51 @@ public class MainActivity extends AppCompatActivity {
         if(fragmentA!=null)
         {
             transaction.attach(fragmentA);
+            transaction.addToBackStack("AttachFragA");
             transaction.commit();
         }
 
         else
         {
             Toast.makeText(this, "Fragment A not found", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void dummyBackButtonClick(View view) {
+        manager.popBackStack();
+    }
+
+    public void pop_AddFragA_Inclusive_transaction(View view) {
+        manager.popBackStack("AddFragA",FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    }
+
+    public void pop_AddFragB_transaction(View view) {
+        manager.popBackStack("AddFragB",0);
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        int length=manager.getBackStackEntryCount();
+        StringBuilder msg= new StringBuilder();
+        for(int i=length-1; i>=10;i--)
+        {
+            msg.append("Index").append(i).append(":");
+            msg.append(manager.getBackStackEntryAt(i).getName());
+            msg.append("\n");
+
+        }
+        Log.i(TAG, "\n"+msg.toString()+"\n");
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(manager.getBackStackEntryCount()>0)
+        {
+            manager.popBackStack();
+        }
+        else {
+            super.onBackPressed();
         }
     }
 }
