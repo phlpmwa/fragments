@@ -7,4 +7,7 @@
     <string name="remove_a">Remove A</string>
     <string name="remove_b">Remove B</string>
     <string name="add_b">ADD B</string>
+    <string name="fragment_b1">Fragment B</string>
+    <string name="result1">Result</string>
+    <string name="results_here">Results here</string>
 </resources>
